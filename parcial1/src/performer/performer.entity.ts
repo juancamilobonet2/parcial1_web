@@ -18,14 +18,4 @@ export class PerformerEntity {
 
     @ManyToMany(() => AlbumEntity, album => album.performers)
     albums: AlbumEntity[];
-
-
-    // @OneToMany(() => CarEntity, carro => carro.propietario)
-    // carros: CarEntity[];
-
-    // @OneToMany(() => ReserveEntity, reserva => reserva.usuario)
-    // reservas: ReserveEntity[];
-
-    // @OneToMany(() => TripEntity, viaje => viaje.conductor)
-    // viajes: TripEntity[];   
 }
