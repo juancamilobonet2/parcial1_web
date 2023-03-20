@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { AlbumEntity } from 'src/album/album.entity';
+import { AlbumEntity } from '../album/album.entity';
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -15,10 +15,4 @@ export class TrackEntity {
 
     @ManyToOne(() => AlbumEntity,album => album.tracks)
     album: AlbumEntity;
-
-    // @OneToMany(() => ReserveEntity, reserva => reserva.usuario)
-    // reservas: ReserveEntity[];
-
-    // @OneToMany(() => TripEntity, viaje => viaje.conductor)
-    // viajes: TripEntity[];
 }

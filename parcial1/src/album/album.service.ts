@@ -40,8 +40,8 @@ export class AlbumService {
         if (!album)
             throw new BusinessLogicException("The album with the given id was not found", BusinessError.NOT_FOUND);
 
-        if (album.tracks.length > 0)
-            throw new BusinessLogicException("The album has tracks associated", BusinessError.BAD_REQUEST);
+        // if (album.tracks && album.tracks.length > 0)
+        //     throw new BusinessLogicException("The album has tracks associated", BusinessError.BAD_REQUEST);
 
         await this.albumRepository.remove(album);
     }

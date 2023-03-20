@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { PerformerEntity } from 'src/performer/performer.entity';
-import { TrackEntity } from 'src/track/track.entity';
-import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { PerformerEntity } from '../performer/performer.entity';
+import { TrackEntity } from '../track/track.entity';
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class AlbumEntity {
@@ -27,6 +27,7 @@ export class AlbumEntity {
     tracks: TrackEntity[];
 
     @ManyToMany(() => PerformerEntity, performer => performer.albums)
+    @JoinTable()
     performers: PerformerEntity[];
 
     // @OneToMany(() => ReserveEntity, reserva => reserva.usuario)

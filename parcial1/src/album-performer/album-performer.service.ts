@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AlbumEntity } from 'src/album/album.entity';
-import { PerformerEntity } from 'src/performer/performer.entity';
-import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { AlbumEntity } from '../album/album.entity';
+import { PerformerEntity } from '../performer/performer.entity';
+import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -20,7 +20,7 @@ export class AlbumPerformerService {
         if (!performer)
             throw new BusinessLogicException("The performer with the given id was not found", BusinessError.NOT_FOUND);
 
-        const album: AlbumEntity = await this.albumRepository.findOne({ where: { id: albumId }, relations: ["propietario"] })
+        const album: AlbumEntity = await this.albumRepository.findOne({ where: { id: albumId }, relations: ["performers", "tracks"] })
         if (!album)
             throw new BusinessLogicException("The album with the given id was not found", BusinessError.NOT_FOUND);
 
